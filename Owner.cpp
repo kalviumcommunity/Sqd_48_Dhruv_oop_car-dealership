@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
+
 class Owner {
 private:
     string name;
@@ -17,7 +18,9 @@ public:
     }
 
     // Member function 2: Update age
-    void updateAge(int newAge) {
-        age = newAge;
+    Owner* updateAge(int newAge) {
+        this->age = newAge;
+        return this; // Enable method chaining
     }
 };
+
