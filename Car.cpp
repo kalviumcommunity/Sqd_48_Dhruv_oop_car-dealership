@@ -10,25 +10,25 @@ private:
     double price;
 
 public:
-    // Constructor
+    // this is Constructor
     Car(string mk, string mdl, int yr, double prc)
         : make(mk), model(mdl), year(yr), price(prc) {}
 
-    // Member function 1: Display car details
+    // Member function for Displaying car details
     void displayDetails() {
         cout << "Car: " << make << " " << model << ", Year: " << year << ", Price: $" << price << endl;
     }
 
-    // Member function 2: Update year
+    // Member function for Updating year
     Car* updateYear(int newYear) {
         this->year = newYear;
-        return this; // Enable method chaining
+        return this; 
     }
 
-    // Member function 3: Update price
+    // Member function for Updating price
     Car* updatePrice(double newPrice) {
         this->price = newPrice;
-        return this; // Enable method chaining
+        return this; 
     }
 };
 
