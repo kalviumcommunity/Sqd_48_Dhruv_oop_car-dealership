@@ -8,19 +8,19 @@ private:
     int age;
 
 public:
-    // Constructor
+    // this is Constructor
     Owner(string nm, int ag)
         : name(nm), age(ag) {}
 
-    // Member function 1: Display owner details
+    // Member function Displaying owner details
     void displayDetails() {
         cout << "Owner: " << name << ", Age: " << age << endl;
     }
 
-    // Member function 2: Update age
+    // Member function Updating age
     Owner* updateAge(int newAge) {
         this->age = newAge;
-        return this; // Enable method chaining
+        return this; 
     }
 };
 

@@ -1,22 +1,20 @@
 #include "Car.cpp"
-#include "Owner.cpp"
+#include <iostream>
 
 int main() {
-    // Create objects of Car and Owner classes
-    Car car1("Toyota", "Camry", 2020, 30000.00);
-    Owner owner1("John Doe", 35);
+    Car cars[3] = {
+        Car("Toyota", "Camry", 2020, 30000.00),
+        Car("Honda", "Civic", 2019, 25000.00),
+        Car("Ford", "Mustang", 2021, 40000.00)
+    };
 
-    // Use member functions
-    car1.displayDetails();
-    owner1.displayDetails();
+    for (int i = 0; i < 3; i++) {
+        cars[i].displayDetails();
+    }
 
-    // Update year and price using method chaining
-    car1.updateYear(2023)->updatePrice(32000.00);
-    owner1.updateAge(36);
+    cars[0].updateYear(2023)->updatePrice(32000.00);
 
-    // Display updated details
-    car1.displayDetails();
-    owner1.displayDetails();
+    cars[0].displayDetails();
 
     return 0;
 }
