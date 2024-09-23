@@ -1,55 +1,31 @@
-// #include "Car.cpp"
-// #include <iostream>
-
-// int main() {
-//     Car cars[3] = {
-//         Car("Toyota", "Camry", 2020, 30000.00),
-//         Car("Honda", "Civic", 2019, 25000.00),
-//         Car("Ford", "Mustang", 2021, 40000.00)
-//     };
-
-//     for (int i = 0; i < 3; i++) {
-//         cars[i].displayDetails();
-//     }
-
-//     cars[0].updateYear(2023)->updatePrice(32000.00);
-
-//     cars[0].displayDetails();
-
-//     return 0;
-// }
-
 #include "Car.cpp"
-#include <iostream>
-using namespace std;
+#include "Owner.cpp"
 
 int main() {
-    int numCars = 3; // Fixed number of cars for demonstration
+    // Create Car objects dynamically
+    Car* car1 = new Car("Toyota", "Camry", 2020);
+    Car* car2 = new Car("Honda", "Civic", 2019);
+    
+    // Create Owner object dynamically
+    Owner* owner1 = new Owner("John Doe", 35);
 
-    // Dynamically allocate memory for an array of Car objects
-    Car* cars = new Car[numCars] {
-        Car("Toyota", "Camry", 2020, 30000.00),
-        Car("Honda", "Civic", 2019, 25000.00),
-        Car("Ford", "Mustang", 2021, 40000.00)
-    };
+    // Use member functions
+    car1->displayDetails();
+    car2->displayDetails();
+    owner1->displayDetails();
 
-    // Display details of all cars
-    for (int i = 0; i < numCars; i++) {
-        cars[i].displayDetails();
-    }
+    // Update year and age
+    car1->updateYear(2023);
+    owner1->updateAge(36);
 
-    // Update the year of the first car
-    cars[0].updateYear(2023);
-    // Update the price of the first car
-    cars[0].price = 32000.00;
+    // Display updated details
+    car1->displayDetails();
+    owner1->displayDetails();
 
-    // Display updated details of all cars
-    for (int i = 0; i < numCars; i++) {
-        cars[i].displayDetails();
-    }
-
-    // Release dynamically allocated memory for Car objects
-    delete[] cars;
+    // Delete dynamically allocated memory
+    delete car1;
+    delete car2;
+    delete owner1;
 
     return 0;
 }
