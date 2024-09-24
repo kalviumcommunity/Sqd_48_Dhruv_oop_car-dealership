@@ -2,30 +2,23 @@
 #include "Owner.cpp"
 
 int main() {
-    // Create Car objects dynamically
-    Car* car1 = new Car("Toyota", "Camry", 2020);
-    Car* car2 = new Car("Honda", "Civic", 2019);
-    
-    // Create Owner object dynamically
+    Car* car1 = new Car("Toyota", "Camry", 2020, 30000);
+    Car* car2 = new Car("Honda", "Civic", 2019, 25000);
     Owner* owner1 = new Owner("John Doe", 35);
 
-    // Use member functions
     car1->displayDetails();
     car2->displayDetails();
     owner1->displayDetails();
 
-    // Update year and age
-    car1->updateYear(2023);
-    owner1->updateAge(36);
+    cout << "Total Cars: " << Car::getCarCount() << endl; // Access static variable
+    cout << "Total Owners: " << Owner::getOwnerCount() << endl; // Access static variable
 
-    // Display updated details
-    car1->displayDetails();
-    owner1->displayDetails();
-
-    // Delete dynamically allocated memory
     delete car1;
     delete car2;
     delete owner1;
+
+    cout << "Total Cars after deletion: " << Car::getCarCount() << endl;
+    cout << "Total Owners after deletion: " << Owner::getOwnerCount() << endl;
 
     return 0;
 }
