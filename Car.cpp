@@ -8,23 +8,25 @@ class Car {
     double price;
 
 public:
-    // Constructor to initialize Car object
-    Car(string make = "", string model = "", int year = 0, double price = 0.0) 
-        : make(make), model(model), year(year), price(price) {}
+    static int carCount; // Static variable to count the number of Car objects
 
-    // Member function to display Car details
+    Car(string make, string model, int year, double price) 
+        : make(make), model(model), year(year), price(price) {
+        carCount++; // Increment count on creation
+    }
+
     void displayDetails() const {
         cout << "Car: " << make << " " << model << ", Year: " << year << ", Price: $" << price << endl;
     }
 
-    // Member function to update the year of the car
-    void updateYear(int newYear) {
-        year = newYear;
+    static int getCarCount() { // Static function to get the count
+        return carCount;
     }
 
-    // Destructor to confirm object destruction
     ~Car() {
-        cout << "Car " << make << " " << model << " destroyed." << endl;
+        carCount--; // Decrement count on destruction
     }
 };
 
+// Initialize static variable
+int Car::carCount = 0;

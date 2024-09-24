@@ -6,21 +6,24 @@ class Owner {
     int age;
 
 public:
-    // Constructor to initialize Owner object
-    Owner(string name = "", int age = 0) : name(name), age(age) {}
+    static int ownerCount; // Static variable to count the number of Owner objects
 
-    // Member function to display Owner details
+    Owner(string name, int age) : name(name), age(age) {
+        ownerCount++; // Increment count on creation
+    }
+
     void displayDetails() const {
         cout << "Owner: " << name << ", Age: " << age << endl;
     }
 
-    // Member function to update age
-    void updateAge(int newAge) {
-        age = newAge;
+    static int getOwnerCount() { // Static function to get the count
+        return ownerCount;
     }
 
-    // Destructor to confirm object destruction
     ~Owner() {
-        cout << "Owner " << name << "Deleted" << endl;
+        ownerCount--; // Decrement count on destruction
     }
 };
+
+// Initialize static variable
+int Owner::ownerCount = 0;
