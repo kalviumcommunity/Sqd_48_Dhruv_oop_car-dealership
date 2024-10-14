@@ -1,3 +1,5 @@
+
+
 #include "Car.cpp"
 #include "Owner.cpp"
 
@@ -10,13 +12,15 @@ int main() {
     car2->displayDetails();
     owner1->displayDetails();
 
-    cout << "Total Cars: " << Car::getCarCount() << endl; // Access static variable
-    cout << "Total Owners: " << Owner::getOwnerCount() << endl; // Access static variable
+    // Using static member functions to access static variables
+    cout << "Total Cars: " << Car::getCarCount() << endl;
+    cout << "Total Owners: " << Owner::getOwnerCount() << endl;
 
     delete car1;
     delete car2;
     delete owner1;
 
+    // Display counts after deletion
     cout << "Total Cars after deletion: " << Car::getCarCount() << endl;
     cout << "Total Owners after deletion: " << Owner::getOwnerCount() << endl;
 
