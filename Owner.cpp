@@ -1,3 +1,5 @@
+
+
 #include <iostream>
 using namespace std;
 
@@ -16,7 +18,7 @@ public:
         cout << "Owner: " << name << ", Age: " << age << endl;
     }
 
-    static int getOwnerCount() { // Static function to get the count
+    static int getOwnerCount() { // Static member function to get the count of owners
         return ownerCount;
     }
 

@@ -19,7 +19,7 @@ public:
         cout << "Car: " << make << " " << model << ", Year: " << year << ", Price: $" << price << endl;
     }
 
-    static int getCarCount() { // Static function to get the count
+    static int getCarCount() { // Static member function to get the count of cars
         return carCount;
     }
 
