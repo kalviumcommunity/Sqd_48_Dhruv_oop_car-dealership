@@ -1,44 +1,58 @@
-// #include "Car.cpp"
-// #include "Owner.cpp"
-
-// int main() {
-//     // Create Car and Owner objects
-//     Car car1("Toyota", "Camry", 2020, 30000);
-//     Owner owner1("John Doe", 35);
-
-//     // Use accessor and mutator methods for Car
-//     cout << "Initial price: $" << car1.getPrice() << endl;
-//     car1.setPrice(32000); // Update the price using setter
-//     car1.displayDetails();
-
-//     // Use accessor and mutator methods for Owner
-//     cout << "Initial owner name: " << owner1.getName() << endl;
-//     owner1.setName("Jane Doe"); // Update the name using setter
-//     owner1.displayDetails();
-
-//     return 0;
-// }
-
-
-#include "Car.cpp"
-#include "Owner.cpp"
+#include "car.cpp"
+#include "owner.cpp"
 
 int main() {
-    // Using default constructor
-    Car car1;
-    car1.displayDetails();
+    // Create various Car objects
+    Car car1("Toyota", "Camry", 2020, 30000);
+    ElectricCar electricCar1("Tesla", "Model 3", 2021, 35000, 250);
+    LuxuryElectricCar luxuryElectricCar1("Tesla", "Model S", 2022, 80000, 400, "Autopilot, Premium Sound System");
 
-    // Using parameterized constructor
-    Car car2("Toyota", "Camry", 2020, 30000);
-    car2.displayDetails();
+    // Variables for Owner details
+    string ownerName;
+    int ownerAge;
 
-    // Using default constructor for Owner
-    Owner owner1;
+    // Take user input for Owner details
+    cout << "Enter the owner's name: ";
+    cin.ignore();  // Ignore any leftover newline character in the input buffer
+    getline(cin, ownerName); // Use getline to allow spaces in the name
+
+    cout << "Enter the owner's age: ";
+    cin >> ownerAge;
+
+    // Create an Owner object using user input
+    Owner owner1(ownerName, ownerAge);
+
+    // Take user input for their budget
+    double budget;
+    cout << "Enter your budget: $";
+    cin >> budget;
+
+    // Display cars within the user's budget
+    cout << "\nCars within your budget of $" << budget << ":\n";
+    bool found = false;
+
+    // Check if each car fits within the user's budget
+    if (car1.getPrice() <= budget) {
+        car1.displayDetails();
+        found = true;
+    }
+    if (electricCar1.getPrice() <= budget) {
+        electricCar1.displayDetails();
+        found = true;
+    }
+    if (luxuryElectricCar1.getPrice() <= budget) {
+        luxuryElectricCar1.displayDetails();
+        found = true;
+    }
+
+    if (!found) {
+        cout << "No cars available within your budget.\n";
+    }
+
+    // Display owner details
+    cout << "\nOwner Details:\n";
     owner1.displayDetails();
-
-    // Using parameterized constructor for Owner
-    Owner owner2("John Doe", 35);
-    owner2.displayDetails();
 
     return 0;
 }
+
