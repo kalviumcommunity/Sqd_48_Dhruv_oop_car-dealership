@@ -21,10 +21,18 @@ public:
         return price;
     }
 
-    // Mutator (setter) for price
+    // Mutator (setter) for price (overloaded version 1: takes double)
     void setPrice(double newPrice) {
         if (newPrice > 0) {
             price = newPrice;
+        }
+    }
+
+    // Overloaded setPrice() to accept price as integer
+    // (overloaded version 2: takes int and converts it to double)
+    void setPrice(int newPrice) {
+        if (newPrice > 0) {
+            price = static_cast<double>(newPrice);  // Convert int to double
         }
     }
 
@@ -68,7 +76,7 @@ class LuxuryElectricCar : public ElectricCar {
 
 public:
     // Parameterized constructor for LuxuryElectricCar
-    LuxuryElectricCar(string make, string model, int year, double price, double batteryRange, string luxuryFeatures)
+     LuxuryElectricCar(string make, string model, int year, double price, double batteryRange, string luxuryFeatures)
         : ElectricCar(make, model, year, price, batteryRange), luxuryFeatures(luxuryFeatures) {
         cout << "LuxuryElectricCar object created: " << make << " " << model << endl;
     }
