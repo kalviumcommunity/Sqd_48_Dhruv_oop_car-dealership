@@ -49,10 +49,14 @@ int main() {
         cout << "No cars available within your budget.\n";
     }
 
+    // Demonstrating function overloading (changing the price using overloaded setPrice)
+    cout << "\nUpdating car1 price using int setter:\n";
+    car1.setPrice(29000);  // Overloaded function accepting an integer
+    car1.displayDetails();
+
     // Display owner details
     cout << "\nOwner Details:\n";
     owner1.displayDetails();
 
     return 0;
 }
-
