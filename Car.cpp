@@ -1,8 +1,15 @@
 #include <iostream>
 using namespace std;
 
-// Base class
-class Car {
+// Abstract base class
+class Vehicle {
+public:
+    virtual void showDetails() const = 0; // Pure virtual function
+    virtual ~Vehicle() {}  // Virtual destructor for proper cleanup of derived objects
+};
+
+// Base class Car inheriting from Vehicle
+class Car : public Vehicle {
 protected:
     string make;
     string model;
@@ -10,84 +17,67 @@ protected:
     double price;
 
 public:
-    // Parameterized constructor to initialize Car object
+    // Parameterized constructor
     Car(string make, string model, int year, double price)
         : make(make), model(model), year(year), price(price) {
         cout << "Car object created: " << make << " " << model << endl;
     }
 
-    // Accessor (getter) for price
-    double getPrice() const {
-        return price;
-    }
-
-    // Mutator (setter) for price (overloaded version 1: takes double)
+    double getPrice() const { return price; }
     void setPrice(double newPrice) {
-        if (newPrice > 0) {
-            price = newPrice;
-        }
+        if (newPrice > 0) price = newPrice;
     }
 
-    // Overloaded setPrice() to accept price as integer
-    // (overloaded version 2: takes int and converts it to double)
+    // Overloaded setter for price (integer version)
     void setPrice(int newPrice) {
-        if (newPrice > 0) {
-            price = static_cast<double>(newPrice);  // Convert int to double
-        }
+        if (newPrice > 0) price = static_cast<double>(newPrice);
     }
 
-    // Member function to display Car details
-    void displayDetails() const {
+    // Overriding the pure virtual function from Vehicle
+    void showDetails() const override {
         cout << "Car: " << make << " " << model << ", Year: " << year << ", Price: $" << price << endl;
     }
 
-    // Destructor
     ~Car() {
         cout << "Car object destroyed: " << make << " " << model << endl;
     }
 };
 
-// Derived class using single inheritance
+// Derived class ElectricCar
 class ElectricCar : public Car {
-    double batteryRange; // Additional property for ElectricCar
+    double batteryRange;
 
 public:
-    // Parameterized constructor for ElectricCar
     ElectricCar(string make, string model, int year, double price, double batteryRange)
         : Car(make, model, year, price), batteryRange(batteryRange) {
         cout << "ElectricCar object created: " << make << " " << model << endl;
     }
 
-    // Display details specific to ElectricCar
-    void displayDetails() const {
-        Car::displayDetails();
+    void showDetails() const override {
+        Car::showDetails();
         cout << "Battery Range: " << batteryRange << " miles" << endl;
     }
 
-    // Destructor
     ~ElectricCar() {
         cout << "ElectricCar object destroyed: " << make << " " << model << endl;
     }
 };
 
-// Derived class using multilevel inheritance
+// Derived class LuxuryElectricCar
 class LuxuryElectricCar : public ElectricCar {
     string luxuryFeatures;
 
 public:
-    // Parameterized constructor for LuxuryElectricCar
-     LuxuryElectricCar(string make, string model, int year, double price, double batteryRange, string luxuryFeatures)
+    LuxuryElectricCar(string make, string model, int year, double price, double batteryRange, string luxuryFeatures)
         : ElectricCar(make, model, year, price, batteryRange), luxuryFeatures(luxuryFeatures) {
         cout << "LuxuryElectricCar object created: " << make << " " << model << endl;
     }
 
-    // Display details specific to LuxuryElectricCar
-    void displayDetails() const {
-        ElectricCar::displayDetails();
+    void showDetails() const override {
+        ElectricCar::showDetails();
         cout << "Luxury Features: " << luxuryFeatures << endl;
     }
 
-    // Destructor
     ~LuxuryElectricCar() {
         cout << "LuxuryElectricCar object destroyed: " << make << " " << model << endl;
     }
