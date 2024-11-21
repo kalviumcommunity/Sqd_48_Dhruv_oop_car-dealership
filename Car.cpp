@@ -64,7 +64,7 @@ class LuxuryElectricCar : public ElectricCar {
 public:
     LuxuryElectricCar(string make, string model, int year, double price, double batteryRange, string luxuryFeatures)
         : ElectricCar(make, model, year, price, batteryRange), luxuryFeatures(luxuryFeatures) {
-        cout << "LuxuryElectricCar object created: " << make << " " << model << endl;
+        cout << "LuxuryElectricCar object created: " << Make << " " << model << endl;
     }
 
     void showDetails() const override {
