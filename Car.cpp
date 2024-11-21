@@ -44,7 +44,7 @@ class ElectricCar : public Car {
 public:
     ElectricCar(string make, string model, int year, double price, double batteryRange)
         : Car(make, model, year, price), batteryRange(batteryRange) {
-        cout << "ElectricCar object created: " << make << " " << model << endl;
+        cout << "ElectricCar object created: " << Make << " " << Model << endl;
     }
 
     void showDetails() const override {
