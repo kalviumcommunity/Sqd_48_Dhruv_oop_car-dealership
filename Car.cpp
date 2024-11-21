@@ -1,12 +1,6 @@
 #include <iostream>
+#include "vehicle.cpp"  // Make sure this is compiled separately
 using namespace std;
-
-// Abstract base class
-class Vehicle {
-public:
-    virtual void showDetails() const = 0; // Pure virtual function
-    virtual ~Vehicle() {}  // Virtual destructor for proper cleanup of derived objects
-};
 
 // Base class Car inheriting from Vehicle
 class Car : public Vehicle {

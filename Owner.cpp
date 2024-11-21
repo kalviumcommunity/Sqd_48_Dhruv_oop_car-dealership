@@ -24,3 +24,4 @@ public:
         cout << "Owner object destroyed: " << name << endl;
     }
 };
+
